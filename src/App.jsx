@@ -1,12 +1,20 @@
 import { useEffect, useState } from "react";
 import AtmosphericConditions from "./components/AtmosphericConditions";
 import WeatherDisplay from "./components/WeatherDisplay";
+import Settings from "./components/Settings";
 
 function App() {
     const [weatherData, setWeatherData] = useState(null);
     const [city, setCity] = useState("delhi");
     const [error, setError] = useState(false);
     const [loading, setLoading] = useState(true);
+    const [settingsOpened, setSettingsOpened] = useState(false);
+    const [units, setUnits] = useState({
+        temperatureUnit: "",
+        windUnit: "",
+        visibilityUnit: "",
+        pressureUnit: "",
+    });
 
     useEffect(() => {
         setLoading(true);
@@ -43,25 +51,33 @@ function App() {
     }, [city]);
 
     return (
-        <section
-            className={`md:min-h-screen flex flex-col justify-center items-center`}
-        >
-            <div
-                className={`md:flex w-full max-w-[750px] min-h-[450px] md:shadow-2xl md:rounded-[35px]`}
+        <>
+            {settingsOpened && (
+                <Settings setSettingsOpened={setSettingsOpened} error={error} />
+            )}
+            <section
+                className={`${
+                    settingsOpened ? "blur-sm" : ""
+                } relative flex flex-col justify-center items-center min-h-screen`}
             >
-                <WeatherDisplay
-                    weatherData={weatherData}
-                    setCity={setCity}
-                    loading={loading}
-                    error={error}
-                />
-                <AtmosphericConditions
-                    weatherData={weatherData}
-                    loading={loading}
-                    error={error}
-                />
-            </div>
-        </section>
+                <div
+                    className={`md:flex w-full max-w-[750px] min-h-[450px] md:shadow-2xl md:rounded-[35px]`}
+                >
+                    <WeatherDisplay
+                        weatherData={weatherData}
+                        setCity={setCity}
+                        loading={loading}
+                        error={error}
+                    />
+                    <AtmosphericConditions
+                        weatherData={weatherData}
+                        loading={loading}
+                        error={error}
+                        setSettingsOpened={setSettingsOpened}
+                    />
+                </div>
+            </section>
+        </>
     );
 }
 

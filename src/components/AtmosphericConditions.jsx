@@ -1,7 +1,12 @@
 import React from "react";
 import Loader from "./Loader";
 
-const AtmosphericConditions = ({ error, loading, weatherData }) => {
+const AtmosphericConditions = ({
+    error,
+    loading,
+    weatherData,
+    setSettingsOpened,
+}) => {
     const data = [
         {
             title: "Wind",
@@ -32,6 +37,13 @@ const AtmosphericConditions = ({ error, loading, weatherData }) => {
 
     return (
         <div className="min-h-[300px] md:w-[50%] p-4 md:p-10 relative">
+            <button
+                className="absolute top-0 right-0"
+                onClick={() => setSettingsOpened(true)}
+                disabled={error}
+            >
+                settings
+            </button>
             {!error &&
                 (loading ? (
                     <Loader />
