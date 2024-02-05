@@ -8,12 +8,13 @@ function App() {
     const [city, setCity] = useState("delhi");
     const [error, setError] = useState(false);
     const [loading, setLoading] = useState(true);
-    const [settingsOpened, setSettingsOpened] = useState(false);
+    const [settingsOpen, setSettingsOpen] = useState(false);
+
     const [units, setUnits] = useState({
-        temperatureUnit: "",
-        windUnit: "",
-        visibilityUnit: "",
-        pressureUnit: "",
+        tempUnit: "°C",
+        windUnit: "m/s",
+        visibilityUnit: "m",
+        pressureUnit: "mb",
     });
 
     useEffect(() => {
@@ -39,10 +40,7 @@ function App() {
                 setWeatherData(weatherObject);
                 setError(false);
             })
-            .catch((err) => {
-                console.log(
-                    "Some error occurred! Maybe the entered city is not valid"
-                );
+            .catch(() => {
                 setError(true);
             })
             .finally(() => {
@@ -52,28 +50,35 @@ function App() {
 
     return (
         <>
-            {settingsOpened && (
-                <Settings setSettingsOpened={setSettingsOpened} error={error} />
+            {settingsOpen && (
+                <Settings
+                    setSettingsOpen={setSettingsOpen}
+                    error={error}
+                    units={units}
+                    setUnits={setUnits}
+                />
             )}
             <section
                 className={`${
-                    settingsOpened ? "blur-sm" : ""
-                } relative flex flex-col justify-center items-center min-h-screen`}
+                    settingsOpen ? "blur-sm" : ""
+                } relative flex flex-col justify-center items-center min-h-screen bg-slate-200`}
             >
                 <div
-                    className={`md:flex w-full max-w-[750px] min-h-[450px] md:shadow-2xl md:rounded-[35px]`}
+                    className={`w-full max-w-[750px] min-h-[450px] md:shadow-2xl md:rounded-[35px] md:flex bg-white`}
                 >
                     <WeatherDisplay
                         weatherData={weatherData}
                         setCity={setCity}
                         loading={loading}
                         error={error}
+                        units={units}
                     />
                     <AtmosphericConditions
                         weatherData={weatherData}
                         loading={loading}
                         error={error}
-                        setSettingsOpened={setSettingsOpened}
+                        setSettingsOpen={setSettingsOpen}
+                        units={units}
                     />
                 </div>
             </section>

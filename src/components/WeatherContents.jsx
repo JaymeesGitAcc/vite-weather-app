@@ -1,6 +1,6 @@
 import React from "react";
 
-function WeatherContents({ weatherData }) {
+function WeatherContents({ weatherData, units }) {
     const city = weatherData?.cityName;
     const country = weatherData?.country;
     const temperature = weatherData?.temperature;
@@ -20,7 +20,7 @@ function WeatherContents({ weatherData }) {
                     {temperature?.toFixed(1)}
                     <span className="text-xl text-slate-400">
                         {" "}
-                        {temperature && "°C"}
+                        {temperature && units.tempUnit}
                     </span>
                 </h1>
             </div>

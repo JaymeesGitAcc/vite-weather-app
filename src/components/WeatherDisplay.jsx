@@ -9,6 +9,7 @@ const WeatherDisplay = ({
     weatherData,
     setCity,
     className = "",
+    units = null,
 }) => {
     return (
         <div
@@ -19,10 +20,10 @@ const WeatherDisplay = ({
                 loading ? (
                     <Loader />
                 ) : (
-                    <WeatherContents weatherData={weatherData} />
+                    <WeatherContents weatherData={weatherData} units={units} />
                 )
             ) : (
-                <ErrorMessage />
+                <ErrorMessage message="Not available" />
             )}
         </div>
     );

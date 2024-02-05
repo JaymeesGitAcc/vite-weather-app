@@ -1,60 +1,64 @@
 import React from "react";
 import Loader from "./Loader";
+import ErrorMessage from "./ErrorMessage";
 
 const AtmosphericConditions = ({
     error,
     loading,
     weatherData,
-    setSettingsOpened,
+    setSettingsOpen,
+    units = null,
 }) => {
     const data = [
         {
-            title: "Wind",
+            label: "Wind",
             value: weatherData?.wind,
-            unit: "m/s",
+            unit: units?.windUnit,
         },
         {
-            title: "Humidity",
+            label: "Humidity",
             value: weatherData?.humidity,
             unit: "%",
         },
         {
-            title: "Visibility",
+            label: "Visibility",
             value: weatherData?.visibility,
-            unit: "m",
+            unit: units?.visibilityUnit,
         },
         {
-            title: "Pressure",
+            label: "Pressure",
             value: weatherData?.pressure,
-            unit: "hPa",
+            unit: units?.pressureUnit,
         },
         {
-            title: "Feels Like",
+            label: "Feels Like",
             value: weatherData?.feelsLike,
-            unit: "°C",
+            unit: units?.tempUnit,
         },
     ];
 
     return (
         <div className="min-h-[300px] md:w-[50%] p-4 md:p-10 relative">
             <button
-                className="absolute top-0 right-0"
-                onClick={() => setSettingsOpened(true)}
+                className={`${
+                    error || loading ? "opacity-0" : ""
+                } absolute top-4 right-8 font-lg`}
+                onClick={() => setSettingsOpen(true)}
                 disabled={error}
             >
-                settings
+                &#9881;
             </button>
             {!error &&
                 (loading ? (
                     <Loader />
                 ) : (
-                    <ul>
-                        {data.map((item, index) => (
+                    <ul className="my-8">
+                        {data.map((item) => (
                             <li
-                                key={index}
+                                key={item.label}
                                 className="flex even:bg-pink-100 odd:bg-green-100 my-4 text-lg rounded-xl font-semibold p-4"
                             >
-                                <h2>{item.title}</h2>
+                                <h2>{item.label}</h2>
                                 <p className="ml-auto">
                                     {item.value}{" "}
                                     <span className="text-slate-500">
