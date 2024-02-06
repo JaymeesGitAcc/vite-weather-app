@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import AtmosphericConditions from "./components/AtmosphericConditions";
 import WeatherDisplay from "./components/WeatherDisplay";
 import Settings from "./components/Settings";
-import { apiKey } from "./config/config.js";
 
 function App() {
     const [weatherData, setWeatherData] = useState(null);
@@ -21,6 +20,8 @@ function App() {
     useEffect(() => {
         setLoading(true);
         setError(false);
+
+        const apiKey = "629cae91753c6dfa85aded52928beddb";
         const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
         fetch(url)
             .then((response) => response.json())
