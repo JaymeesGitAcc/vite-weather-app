@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import AtmosphericConditions from "./components/AtmosphericConditions";
 import WeatherDisplay from "./components/WeatherDisplay";
 import Settings from "./components/Settings";
-import { apiKey } from "./config.js";
+import { apiKey } from "./config/config.js";
 
 function App() {
     const [weatherData, setWeatherData] = useState(null);
