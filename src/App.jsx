@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import AtmosphericConditions from "./components/AtmosphericConditions";
 import WeatherDisplay from "./components/WeatherDisplay";
 import Settings from "./components/Settings";
+import { apiKey } from "./config";
 
 function App() {
     const [weatherData, setWeatherData] = useState(null);
@@ -14,13 +15,12 @@ function App() {
         tempUnit: "°C",
         windUnit: "m/s",
         visibilityUnit: "m",
-        pressureUnit: "mb",
+        pressureUnit: "hPa",
     });
 
     useEffect(() => {
         setLoading(true);
         setError(false);
-        const apiKey = `629cae91753c6dfa85aded52928beddb`;
         const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
         fetch(url)
             .then((response) => response.json())
@@ -64,7 +64,7 @@ function App() {
                 } relative flex flex-col justify-center items-center min-h-screen bg-slate-200`}
             >
                 <div
-                    className={`w-full max-w-[750px] min-h-[450px] md:shadow-2xl md:rounded-[35px] md:flex bg-white`}
+                    className={`w-full max-w-[750px] min-h-[450px] shadow-sm shadow-black md:rounded-[35px] md:flex bg-white`}
                 >
                     <WeatherDisplay
                         weatherData={weatherData}

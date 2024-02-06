@@ -1,9 +1,10 @@
 import React from "react";
+import { setTemp } from "../utils/conversionMethods";
 
 function WeatherContents({ weatherData, units }) {
     const city = weatherData?.cityName;
     const country = weatherData?.country;
-    const temperature = weatherData?.temperature;
+    const temperature = setTemp(units?.tempUnit, weatherData?.temperature);
     const typeOfWeather = weatherData?.weatherType;
     const description = weatherData?.description;
 
@@ -17,7 +18,7 @@ function WeatherContents({ weatherData, units }) {
             </div>
             <div className="h-[135px] w-[135px] md:h-[170px] md:w-[170px] flex justify-center items-center rounded-full mx-auto shadow-[inset_20px_70px_50px_rgba(0,0,0,0.2)]">
                 <h1 className="text-[2.5rem] text-slate-200">
-                    {temperature?.toFixed(1)}
+                    {temperature}
                     <span className="text-xl text-slate-400">
                         {" "}
                         {temperature && units.tempUnit}

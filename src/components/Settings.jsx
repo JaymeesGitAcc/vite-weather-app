@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import SettingBtnsContainer from "./SettingBtnsContainer";
 
 function Settings({ setSettingsOpen, units, setUnits }) {
@@ -30,7 +30,7 @@ function Settings({ setSettingsOpen, units, setUnits }) {
         {
             title: "Pressure",
             keyTitle: "pressureUnit",
-            unitsArray: ["mb", "hPa", "Pa"],
+            unitsArray: ["hPa", "Pa"],
             onClick: (callback) => {
                 callback();
             },
