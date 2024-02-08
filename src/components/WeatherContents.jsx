@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { setTemp } from "../utils/conversionMethods";
+import weatherInfoContext from "../context/weatherInfoContext";
 
-function WeatherContents({ weatherData, units }) {
+function WeatherContents({ units }) {
+    const { weatherData } = useContext(weatherInfoContext);
+
     const city = weatherData?.cityName;
     const country = weatherData?.country;
     const temperature = setTemp(units?.tempUnit, weatherData?.temperature);

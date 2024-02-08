@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
     setPressure,
     setTemp,
     setVisibility,
     setWind,
 } from "../utils/conversionMethods";
+import weatherInfoContext from "../context/weatherInfoContext";
 
-function InfoList({ data, units }) {
+function InfoList({ units }) {
+    const { weatherData: data } = useContext(weatherInfoContext);
+
     let windVal = setWind(units?.windUnit, data?.wind);
     let feelslikeVal = setTemp(units?.tempUnit, data?.feelsLike);
     let visibilityVal = setVisibility(units?.visibilityUnit, data?.visibility);

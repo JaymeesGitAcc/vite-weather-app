@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import weatherInfoContext from "../context/weatherInfoContext";
 
-export const SearchBox = ({ setCity, className = "" }) => {
+export const SearchBox = ({ className = "" }) => {
     const [input, setInput] = useState("");
+
+    const { setCity } = useContext(weatherInfoContext);
 
     function handleOnSubmit(e) {
         e.preventDefault();
