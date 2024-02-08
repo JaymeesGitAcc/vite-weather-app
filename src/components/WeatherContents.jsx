@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { setTemp } from "../utils/conversionMethods";
 import weatherInfoContext from "../context/weatherInfoContext";
+import WeatherIcon from "./WeatherIcon";
 
 function WeatherContents({ units }) {
     const { weatherData } = useContext(weatherInfoContext);
@@ -10,6 +11,7 @@ function WeatherContents({ units }) {
     const temperature = setTemp(units?.tempUnit, weatherData?.temperature);
     const typeOfWeather = weatherData?.weatherType;
     const description = weatherData?.description;
+    const icon = weatherData.iconId;
 
     return (
         <>
@@ -29,9 +31,12 @@ function WeatherContents({ units }) {
                 </h1>
             </div>
             <div className="text-center py-10 px-5">
-                <h1 className="text-[1.5rem] font-bold text-slate-200 mb-4">
-                    {typeOfWeather}
-                </h1>
+                <div className="flex items-center justify-center">
+                    {icon && <WeatherIcon icon={icon} />}
+                    <h1 className="text-[1.5rem] font-bold text-slate-200">
+                        {typeOfWeather}
+                    </h1>
+                </div>
                 <p className="font-semibold md:text-lg text-slate-300 capitalize italic">
                     {description}
                 </p>

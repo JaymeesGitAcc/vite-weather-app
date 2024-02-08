@@ -24,6 +24,7 @@ function useWeatherInfo(cityname) {
                     feelsLike: data["main"].feels_like,
                     weatherType: data["weather"][0].main,
                     description: data["weather"][0].description,
+                    iconId: data["weather"][0].icon,
                 };
                 setWeatherData(weatherObject);
             })
