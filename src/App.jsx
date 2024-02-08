@@ -2,7 +2,7 @@ import { useState } from "react";
 import AtmosphericConditions from "./components/AtmosphericConditions";
 import WeatherDisplay from "./components/WeatherDisplay";
 import Settings from "./components/Settings";
-import { WeatherInfoProvider } from "./context/weatherInfoProvider";
+import WeatherInfoProvider from "./context/weatherInfoProvider";
 
 function App() {
     const [settingsOpen, setSettingsOpen] = useState(false);
