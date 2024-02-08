@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import weatherInfoContext from "./weatherInfoContext";
 import useWeatherInfo from "../hooks/useWeatherInfo";
 
-const WeatherInfoProvider = ({ children }) => {
+function WeatherDataProvider({ children }) {
     const [city, setCity] = useState("delhi");
     const { weatherData, loading, error } = useWeatherInfo(city);
 
@@ -13,6 +13,6 @@ const WeatherInfoProvider = ({ children }) => {
             {children}
         </weatherInfoContext.Provider>
     );
-};
+}
 
-export default WeatherInfoProvider;
+export default WeatherDataProvider;

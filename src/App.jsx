@@ -2,7 +2,7 @@ import { useState } from "react";
 import AtmosphericConditions from "./components/AtmosphericConditions";
 import WeatherDisplay from "./components/WeatherDisplay";
 import Settings from "./components/Settings";
-import WeatherInfoProvider from "./context/weatherInfoProvider";
+import WeatherDataProvider from "./context/WeatherDataProvider";
 
 function App() {
     const [settingsOpen, setSettingsOpen] = useState(false);
@@ -16,7 +16,7 @@ function App() {
     let blurEffect = settingsOpen ? "blur-sm" : "";
 
     return (
-        <WeatherInfoProvider>
+        <WeatherDataProvider>
             {settingsOpen && (
                 <Settings
                     setSettingsOpen={setSettingsOpen}
@@ -37,7 +37,7 @@ function App() {
                     />
                 </div>
             </section>
-        </WeatherInfoProvider>
+        </WeatherDataProvider>
     );
 }
 
