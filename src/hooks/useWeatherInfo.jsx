@@ -8,12 +8,11 @@ function useWeatherInfo(cityname) {
     useEffect(() => {
         setLoading(true);
         setError(false);
-        const apiKey = "629cae91753c6dfa85aded52928beddb";
-        const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityname}&units=metric&appid=${apiKey}`;
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityname}&units=metric&appid=629cae91753c6dfa85aded52928beddb`;
         fetch(url)
             .then((response) => response.json())
             .then((data) => {
-                const weatherObject = {
+                setWeatherData({
                     cityName: data["name"],
                     country: data["sys"].country,
                     temperature: data["main"].temp,
@@ -25,8 +24,7 @@ function useWeatherInfo(cityname) {
                     weatherType: data["weather"][0].main,
                     description: data["weather"][0].description,
                     iconId: data["weather"][0].icon,
-                };
-                setWeatherData(weatherObject);
+                });
             })
             .catch(() => {
                 setError(true);

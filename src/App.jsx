@@ -13,7 +13,7 @@ function App() {
         pressureUnit: "hPa",
     });
 
-    let blurEffect = settingsOpen ? "blur-sm" : "";
+    let blurEffect = settingsOpen ? `blur-sm` : "";
 
     return (
         <WeatherDataProvider>

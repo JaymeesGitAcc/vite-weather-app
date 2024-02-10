@@ -27,7 +27,12 @@ export const SearchBox = ({ className = "" }) => {
                     onChange={(e) => setInput(e.target.value)}
                     className={`w-full text-lg p-2 outline-none`}
                 />
-                <button className="p-2 text-white bg-indigo-500">search</button>
+                <button className="p-2 text-white bg-indigo-500 px-4">
+                    <div className="flex flex-col justify-center items-center -rotate-45">
+                        <div className="h-[20px] w-[20px] border-2 border-slate-200 rounded-full"></div>
+                        <div className="h-[10px] w-[2px] bg-slate-200"></div>
+                    </div>
+                </button>
             </form>
         </div>
     );
