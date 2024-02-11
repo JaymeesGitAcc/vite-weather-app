@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import conf from "../conf/conf.js";
 
 function useWeatherInfo(cityname) {
     const [weatherData, setWeatherData] = useState(null);
@@ -8,7 +9,7 @@ function useWeatherInfo(cityname) {
     useEffect(() => {
         setLoading(true);
         setError(false);
-        const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityname}&units=metric&appid=629cae91753c6dfa85aded52928beddb`;
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityname}&units=metric&appid=${conf.apikey}`;
         fetch(url)
             .then((response) => response.json())
             .then((data) => {
