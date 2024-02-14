@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import weatherInfoContext from "../context/weatherInfoContext";
+import weatherInfoContext from "../context/weather-data-context/weatherInfoContext";
 
 export const SearchBox = ({ className = "" }) => {
     const [input, setInput] = useState("");

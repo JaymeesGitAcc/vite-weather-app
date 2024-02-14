@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import weatherInfoContext from "./weatherInfoContext";
-import useWeatherInfo from "../hooks/useWeatherInfo";
+import useWeatherInfo from "../../hooks/useWeatherInfo";
 
 function WeatherDataProvider({ children }) {
     const [city, setCity] = useState("delhi");

@@ -3,7 +3,15 @@ export function setTemp(unit, value) {
         case "°F":
             return ((9 / 5) * value + 32).toFixed(1);
         default:
-            return value;
+            return value.toFixed(1);
+    }
+}
+export function setFeelsLike(unit, value) {
+    switch (unit) {
+        case "°F":
+            return ((9 / 5) * value + 32).toFixed(1);
+        default:
+            return value.toFixed(1);
     }
 }
 
@@ -13,6 +21,15 @@ export function setWind(unit, value) {
             return (value * 3.6).toFixed(1);
         case "mph":
             return (value * 2.23694).toFixed(1);
+        default:
+            return value;
+    }
+}
+
+export function setHumidity(unit, value) {
+    switch (unit) {
+        case "g/kg":
+            return (value / 100).toFixed(1);
         default:
             return value;
     }

@@ -3,16 +3,9 @@ import ErrorMessage from "./ErrorMessage";
 import Loader from "./Loader";
 import { SearchBox } from "./SearchBox";
 import WeatherContents from "./WeatherContents";
-import weatherInfoContext from "../context/weatherInfoContext";
+import weatherInfoContext from "../context/weather-data-context/weatherInfoContext";
 
-const WeatherDisplay = ({
-    // error,
-    // loading,
-    // weatherData,
-    // setCity,
-    className = "",
-    units = null,
-}) => {
+const WeatherDisplay = ({ className = "", units = null, setUnits }) => {
     const { loading, error } = useContext(weatherInfoContext);
     return (
         <div
@@ -23,7 +16,7 @@ const WeatherDisplay = ({
                 loading ? (
                     <Loader />
                 ) : (
-                    <WeatherContents units={units} />
+                    <WeatherContents />
                 )
             ) : (
                 <ErrorMessage message="Not available" />

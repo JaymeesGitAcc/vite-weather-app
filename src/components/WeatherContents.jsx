@@ -1,10 +1,12 @@
 import React, { useContext } from "react";
 import { setTemp } from "../utils/conversionMethods";
-import weatherInfoContext from "../context/weatherInfoContext";
+import weatherInfoContext from "../context/weather-data-context/weatherInfoContext";
 import WeatherIcon from "./WeatherIcon";
+import unitsContext from "../context/unitscontext/unitsContext";
 
-function WeatherContents({ units }) {
+function WeatherContents() {
     const { weatherData } = useContext(weatherInfoContext);
+    const { units, setUnits } = useContext(unitsContext);
 
     const city = weatherData?.cityName;
     const country = weatherData?.country;
@@ -21,14 +23,36 @@ function WeatherContents({ units }) {
                     {city && ","} {country}
                 </h1>
             </div>
-            <div className="h-[135px] w-[135px] md:h-[170px] md:w-[170px] flex justify-center items-center rounded-full mx-auto shadow-[inset_20px_70px_50px_rgba(0,0,0,0.2)]">
-                <h1 className="text-[2.5rem] text-slate-200">
-                    {temperature}
-                    <span className="text-xl text-slate-400">
-                        {" "}
-                        {temperature && units.tempUnit}
-                    </span>
-                </h1>
+            <div className="h-[170px] w-[170px] flex justify-center items-center rounded-full mx-auto shadow-[inset_20px_70px_50px_rgba(0,0,0,0.2)]">
+                <h1 className="text-[32px] text-slate-200">{temperature}</h1>
+
+                <div className="ml-4">
+                    <button
+                        className={`${
+                            units["tempUnit"] === "°C"
+                                ? "text-white"
+                                : "text-slate-400"
+                        } text-lg font-bold`}
+                        onClick={() =>
+                            setUnits({ ...units, ["tempUnit"]: "°C" })
+                        }
+                    >
+                        °C
+                    </button>
+                    <span className="text-slate-400 mx-2">{"|"}</span>
+                    <button
+                        className={`${
+                            units["tempUnit"] === "°F"
+                                ? "text-white"
+                                : "text-slate-400"
+                        } text-lg font-bold`}
+                        onClick={() =>
+                            setUnits({ ...units, ["tempUnit"]: "°F" })
+                        }
+                    >
+                        °F
+                    </button>
+                </div>
             </div>
             <div className="text-center py-10 px-5">
                 <div className="flex items-center justify-center">
