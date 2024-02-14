@@ -3,13 +3,7 @@ import Loader from "./Loader";
 import InfoList from "./InfoList";
 import weatherInfoContext from "../context/weatherInfoContext";
 
-const AtmosphericConditions = ({
-    // error,
-    // loading,
-    // weatherData,
-    setSettingsOpen,
-    units = null,
-}) => {
+const AtmosphericConditions = ({ setSettingsOpen, units = null }) => {
     const { error, loading } = useContext(weatherInfoContext);
 
     return (

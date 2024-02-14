@@ -28,7 +28,7 @@ function App() {
                 className={`${blurEffect} relative flex flex-col justify-center items-center min-h-screen bg-slate-200`}
             >
                 <div
-                    className={`w-full max-w-[750px] min-h-[450px] shadow-sm shadow-black md:rounded-[35px] md:flex bg-white`}
+                    className={`w-full max-w-[750px] min-h-[450px] shadow-sm shadow-black md:rounded-[35px] md:flex`}
                 >
                     <WeatherDisplay units={units} />
                     <AtmosphericConditions
