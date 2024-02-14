@@ -8,10 +8,10 @@ function App() {
         <WeatherDataProvider>
             <UnitsProvider>
                 <section
-                    className={`relative flex flex-col justify-center items-center min-h-screen bg-slate-200`}
+                    className={`bg-slate-300 md:min-h-screen md:grid md:place-items-center`}
                 >
                     <div
-                        className={`w-full max-w-[750px] min-h-[450px] shadow-sm shadow-black md:rounded-[35px] md:flex`}
+                        className={`max-w-[750px] shadow-sm shadow-black md:rounded-[35px] md:w-full md:flex`}
                     >
                         <WeatherDisplay />
                         <AtmosphericConditions />
