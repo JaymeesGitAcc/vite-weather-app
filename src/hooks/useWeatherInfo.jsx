@@ -9,7 +9,9 @@ function useWeatherInfo(cityname) {
     useEffect(() => {
         setLoading(true);
         setError(false);
-        const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityname}&units=metric&appid=${conf.apikey}`;
+
+        let url = `${conf.endpoint}q=${cityname}&units=metric&appid=${conf.apikey}`;
+
         fetch(url)
             .then((response) => response.json())
             .then((data) => {
