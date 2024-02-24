@@ -5,6 +5,7 @@ function useWeatherInfo(cityname) {
     const [weatherData, setWeatherData] = useState(null);
     const [error, setError] = useState(false);
     const [loading, setLoading] = useState(true);
+    // const [coordinates, setCoordinates] = useState(null);
 
     useEffect(() => {
         setLoading(true);
@@ -15,7 +16,9 @@ function useWeatherInfo(cityname) {
         fetch(url)
             .then((response) => response.json())
             .then((data) => {
+                // setCoordinates(data["coord"]);
                 setWeatherData({
+                    coordinates: data["coord"],
                     cityName: data["name"],
                     country: data["sys"].country,
                     temperature: data["main"].temp,

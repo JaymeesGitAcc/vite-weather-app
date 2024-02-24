@@ -14,7 +14,7 @@ function Select({ options = null }) {
         <select
             onChange={handleOnChange}
             defaultValue={units[options.name]}
-            className="bg-slate-400 outline-none ml-2 text-md md:text-lg"
+            className="bg-[#f2f2f2] outline-none ml-2 text-md md:text-lg"
             aria-label="set-unit"
         >
             {options?.units.map((option) => (
