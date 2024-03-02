@@ -3,7 +3,7 @@ import weatherInfoContext from "../context/weather-data-context/weatherInfoConte
 import conf from "../conf/conf";
 import FilterButtons from "./FilterButtons";
 import { extractDateInfo } from "../utils/dateFormatMethods";
-import ForecastCard from "./ForecastCard";
+import ForecastRow from "./ForecastRow";
 
 function Forecast() {
     const [forecast, setForecast] = useState(null);
@@ -45,9 +45,11 @@ function Forecast() {
     }, [weatherData]);
     return !error ? (
         <div className="p-2 max-w-[750px] mx-auto overflow-auto">
-            <h1 className="text-2xl font-bold mb-4 text-[#73264c] md:text-3xl">
-                Weekly Forecast
-            </h1>
+            {forecast && (
+                <h1 className="text-2xl text-center font-bold mb-4 text-[#73264c] md:text-3xl">
+                    FORECAST
+                </h1>
+            )}
             {filterBtns && (
                 <FilterButtons
                     tabButtons={filterBtns}
@@ -56,9 +58,9 @@ function Forecast() {
                 />
             )}
 
-            <div className="flex gap-4 overflow-auto my-4">
+            <div className="">
                 {forecastDetails?.map((detail) => (
-                    <ForecastCard key={detail.dt} detail={detail} />
+                    <ForecastRow key={detail.dt} detail={detail} />
                 ))}
             </div>
         </div>

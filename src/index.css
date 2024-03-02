@@ -1,11 +1,35 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+    font-family: "Roboto", sans-serif;
+}
 
 @keyframes rotate {
     to {
         transform: rotate(360deg);
     }
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    border-radius: 8px;
+    background-color: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #9cbcf8;
+    border-radius: 8px;
 }
 
 .custom-loading {
@@ -20,22 +44,4 @@
     animation-duration: 0.8s;
     animation-timing-function: ease;
     animation-iteration-count: infinite;
-}
-
-@keyframes slidedown {
-    from {
-        transform: translateY(-5%);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-.custom-slidedown {
-    animation-name: slidedown;
-    animation-duration: 200ms;
-    animation-timing-function: ease-in;
-    animation-iteration-count: 1;
 }

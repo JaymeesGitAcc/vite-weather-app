@@ -5,7 +5,7 @@ function FilterButtons({ tabButtons, currentTabButton, onTabButtonChange }) {
         onTabButtonChange(tabButtons[0]);
     }, []);
     return (
-        <div className="flex overflow-auto rounded-lg">
+        <div className="flex overflow-auto">
             {tabButtons.map((btn) => (
                 <button
                     key={btn}
